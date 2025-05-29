@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityController;
+use App\Http\Controllers\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserPlatformController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,22 +27,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/user', function () {
-     $y=User::first();
-     $y->password=Illuminate\Support\Facades\Hash::make('admin@24');
-     $y->save();
-     return $y;
-});
- 
+
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('tasks', TaskController::class);
-    Route::get('statistics', [TaskController::class, 'statistics'])->name('tasks.statistics');
-    Route::get('/{id}/edit', [TaskController::class,'edit'])->name('tasks.edit');
-    Route::post('/{id}/update', [TaskController::class,'update'])->name('tasks.update');
-    Route::get('/delete', [TaskController::class,'destroy'])->name('tasks.destroy');
-    Route::get('index',[HomeController::class,'index']);
+    Route::resource('posts', PostController::class);
+    Route::get('/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::post('/{id}/update', [PostController::class, 'update'])->name('posts.update');
+    Route::get('/delete', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('index', [HomeController::class, 'index']);
+    Route::get('platforms', [UserPlatformController::class, 'index'])->name('platforms');
+    Route::post('platforms/toggle', [UserPlatformController::class, 'toggle'])->name('platforms.toggle');
+    Route::get('analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
+    Route::get('activity-log', [ActivityController::class, 'index'])->name('activity.index');
+
 });
-
-

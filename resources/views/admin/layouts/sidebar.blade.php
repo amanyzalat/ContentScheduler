@@ -18,12 +18,46 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ti-package"></i>
-                        <span>Tasks</span>
+                        <span>Posts</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('tasks.create')}}">Add</a></li>
-                        <li><a href="{{route('tasks.index')}}">List</a></li>
-                        <li><a href="{{route('tasks.statistics')}}">Statistics</a></li>
+                        <li><a href="{{route('posts.create')}}">Add</a></li>
+                        <li><a href="{{route('posts.index')}}">List</a></li>
+                        
+                    </ul>
+                </li>
+                 <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ti-package"></i>
+                        <span>Platforms</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        
+                        <li><a href="{{route('platforms')}}">List</a></li>
+                       
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ti-package"></i>
+                        <span>Post Analytics</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        
+                        <li><a href="{{route('analytics.index')}}">List</a></li>
+                       
+                    </ul>
+                </li>
+               
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ti-package"></i>
+                        <span> Activity Log</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        
+                        <li><a href="{{route('activity.index')}}">List</a></li>
+                       
                     </ul>
                 </li>
                

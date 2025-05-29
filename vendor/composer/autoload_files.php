@@ -39,5 +39,5 @@ return array(
     'a1cfe24d14977df6878b9bf804af2d1c' => $vendorDir . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
     'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     '320163ac6b93aebe3dc25b60a0533d56' => $vendorDir . '/spatie/laravel-ignition/src/helpers.php',
-    'ef157334f1067da991ff8953983afdb3' => $baseDir . '/app/Helpers/helper.php',
+    '5bb536d4699fc9d46de00b5d7c17b2c2' => $baseDir . '/app/Helpers/ActivityLogger.php',
 );

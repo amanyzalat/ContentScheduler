@@ -5,7 +5,7 @@ namespace App\Http\Repositories\Post;
 use App\Http\Repositories\Base\BaseRepository;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Helpers\ActivityLogger;
 
 final class PostRepository extends BaseRepository implements PostInterface
 {
@@ -56,11 +56,42 @@ final class PostRepository extends BaseRepository implements PostInterface
             return ['status' => false, 'errors' => ['error' => [trans('crud.create')]]];
         }
 
-
+        ActivityLogger::log('Created Post', "Post ID: {$model->id}");
         return ['status' => true, 'data' => $model];
     }
 
-    
+    public function createForm($request)
+    {
+
+        $model = Auth::user()->posts()->create($request->only([
+            'title',
+            'content',
+            'image_url',
+            'scheduled_time',
+            'status'
+        ]));
+        $imageUrl = null;
+        if ($request->hasFile('image')) {
+            $imageUrl = $request->file('image')->store('post-images', 'public');
+        }
+        if ($request->filled('platforms')) {
+            $platformData = [];
+
+            foreach ($request->platforms as $platformId) {
+                $platformData[$platformId] = ['platform_status' => 'pending'];
+            }
+
+            $model->platforms()->attach($platformData);
+        }
+
+        ActivityLogger::log('Created Post', "Post ID: {$model->id}");
+
+        return true;
+    }
+
+
+
+
     public function edit($request, $id)
     {
         $model = $this->findById($id);
@@ -90,7 +121,4 @@ final class PostRepository extends BaseRepository implements PostInterface
 
         return ['status' => true, 'data' => $model];
     }
-
-
-    
 }

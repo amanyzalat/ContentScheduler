@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Services\ResponseService;
+use App\Helpers\ActivityLogger;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\updatePostRequest;
+use App\Http\Repositories\Post\PostInterface;
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\updatePostRequest;
 use App\Http\Resources\PostListResource;
 use App\Http\Resources\PostResource;
-use App\Http\Repositories\Post\PostInterface;
+use App\Services\ResponseService;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -68,6 +69,7 @@ class PostController extends Controller
             return $this->responseService->json('Fail!', [], 400, ['errors' => [trans('crud.notfound')]]);
         }
         $post->delete();
+        ActivityLogger::log('Deleted Post', "Post ID: {$post->id}");
         return $this->responseService->json('Success!', [trans('messages.delete')], 200);
     }
    

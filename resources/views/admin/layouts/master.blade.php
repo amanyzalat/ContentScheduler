@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title> @yield('title')| Tasks - Dashboard</title>
+    <title> @yield('title')| Content Scheduler - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Tasks - Dashboard" name="description">
     <meta name="keywords" content="Tasks - Dashboard">

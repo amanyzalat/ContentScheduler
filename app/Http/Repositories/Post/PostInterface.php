@@ -8,5 +8,6 @@ interface PostInterface
     public function create($request);
     public function edit($request, $id);
     public function delete($id);
+     public function createForm($request);
 
 }
