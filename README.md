@@ -8,15 +8,14 @@ This is a Laravel-based web application.
 - Composer
 - Laravel ^11
 - MySQL
-- Filament Backend
-- React.js & npm (for frontend assets)
+
 
 ## 🔧 Installation
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/dubisign/ModernSkills.Dashboard.git
+   git clone https://github.com/amanyzalat/ContentScheduler.git
    cd your-laravel-project
 
 2. **Install dependencies:**
